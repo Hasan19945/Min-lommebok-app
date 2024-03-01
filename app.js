@@ -7,8 +7,8 @@ const ekleFormu = document.getElementById("ekle-formu");
 
 // Variables
 
-let gelirler = 0; //gelir girişlerini tutacak olan değişken
-let harcamaListesi = []; //harcama objelerimizi tutacak olan array
+let gelirler = 0; 
+let harcamaListesi = []; 
 
 //Hesap tablosu
 
@@ -81,22 +81,7 @@ harcamaFormu.addEventListener("submit", (e) => {
 //Harcamayı Dom'a yaz
 
 const harcamayiDomaYaz = ({ id, miktar, tarih, alan }) => {
-    // const {id, miktar, tarih,alan} = yeniHarcama //destruct the data
-
-    //innerHTML ile
-
-    // harcamaBody.innerHTML += `
-    // <tr>
-    // <td>${tarih}</td>
-    // <td>${alan}</td>
-    // <td>${miktar}</td>
-    // <td><i id=${id} class="fa-solid fa-trash-can text-danger"  type="button"></i></td>
-
-    // </tr>
-    // `
-    //istenmeyen kod çalıştırılabilir.
-
-    // create element yöntemi ile
+   
 
     const tr = document.createElement("tr"); // tr elementi oluşturur
     // tr elementinin ilk üç td sini oluşturur.
@@ -166,7 +151,7 @@ harcamaBody.addEventListener("click", (e) => {
     //yeni array i local e update eder
     localStorage.setItem("harcamalar", JSON.stringify(harcamaListesi))
 
-    //silindikten sonra yeniden hesapla
+  
 
     hesaplaVeGuncelle()
 
@@ -176,12 +161,11 @@ harcamaBody.addEventListener("click", (e) => {
 
 temizleBtn.addEventListener("click", () => {
     if (confirm('Silmek istediğinize emin misiniz?')) {
-        harcamaListesi = [] //tüm harcamaları listeden siler
-        gelirler = 0 //geliri sıfırlar
-        // localStorage.clear() // tüm local storage siler
-        localStorage.removeItem('gelirler') // sadece gelirleri siler
-        localStorage.removeItem('harcamalar') // sadece gelirleri siler
-        harcamaBody.innerHTML = "" // DOM dan harcamaları siler
-        hesaplaVeGuncelle() //silindikten sonra yeniden hesapla
+        harcamaListesi = [] 
+        gelirler = 0 
+        localStorage.removeItem('gelirler') 
+        localStorage.removeItem('harcamalar') 
+        harcamaBody.innerHTML = "" 
+        hesaplaVeGuncelle() 
     }
 })
